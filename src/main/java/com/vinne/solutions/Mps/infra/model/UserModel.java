@@ -1,4 +1,4 @@
-package com.vinne.solutions.Mps.model;
+package com.vinne.solutions.Mps.infra.model;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;

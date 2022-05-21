@@ -1,7 +1,7 @@
-package com.vinne.solutions.Mps.controller;
+package com.vinne.solutions.Mps.presenter.controller;
 
-import com.vinne.solutions.Mps.model.UserModel;
-import com.vinne.solutions.Mps.services.UserService;
+import com.vinne.solutions.Mps.infra.model.UserModel;
+import com.vinne.solutions.Mps.infra.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

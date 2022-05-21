@@ -1,6 +1,6 @@
-package com.vinne.solutions.Mps.repository;
+package com.vinne.solutions.Mps.domain.repository;
 
-import com.vinne.solutions.Mps.model.UserModel;
+import com.vinne.solutions.Mps.infra.model.UserModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

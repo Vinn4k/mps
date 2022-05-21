@@ -1,6 +1,6 @@
 package com.vinne.solutions.Mps.mocks;
 
-import com.vinne.solutions.Mps.model.UserModel;
+import com.vinne.solutions.Mps.infra.model.UserModel;
 
 public class UserMock {
 

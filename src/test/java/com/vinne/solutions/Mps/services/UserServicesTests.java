@@ -1,8 +1,9 @@
 package com.vinne.solutions.Mps.services;
 
+import com.vinne.solutions.Mps.infra.services.UserService;
 import com.vinne.solutions.Mps.mocks.UserMock;
-import com.vinne.solutions.Mps.model.UserModel;
-import com.vinne.solutions.Mps.repository.UserRepository;
+import com.vinne.solutions.Mps.infra.model.UserModel;
+import com.vinne.solutions.Mps.domain.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

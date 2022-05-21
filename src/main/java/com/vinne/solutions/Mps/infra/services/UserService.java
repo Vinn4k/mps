@@ -1,7 +1,7 @@
-package com.vinne.solutions.Mps.services;
+package com.vinne.solutions.Mps.infra.services;
 
-import com.vinne.solutions.Mps.model.UserModel;
-import com.vinne.solutions.Mps.repository.UserRepository;
+import com.vinne.solutions.Mps.infra.model.UserModel;
+import com.vinne.solutions.Mps.domain.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
