@@ -86,13 +86,13 @@ paths:
           schema:
             $ref: "#/definitions/ApiResponse"
 
-  /pet/findByStatus:
+  /testando-swagger:
     get:
       tags:
-        - "pet"
-      summary: "Finds Pets by status"
+        - "Teste"
+      summary: "testando swagger para buscar informaçoes"
       description: "Multiple status values can be provided with comma separated strings"
-      operationId: "findPetsByStatus"
+      operationId: "testandoSwagger"
       produces:
         - "application/json"
         - "application/xml"
@@ -561,14 +561,22 @@ definitions:
         type: "string"
       message:
         type: "string"
+
   Category:
     type: "object"
     properties:
       id:
         type: "integer"
         format: "int64"
-      name:
+      descricao:
         type: "string"
+      ativo:
+        type: boolean
+
+  ListarCategoria:
+    type: array
+    items:
+      $ref: "#/definitions/Category"
 
   Pet:
     type: "object"

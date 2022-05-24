@@ -3,7 +3,7 @@ package com.vinne.solutions.Mps.infra.services;
 import com.vinne.solutions.Mps.domain.enums.ExceptionReason;
 import com.vinne.solutions.Mps.domain.exception.CategoriaException;
 import com.vinne.solutions.Mps.domain.repository.CategoriaRepository;
-import com.vinne.solutions.Mps.domain.usercases.Category;
+import com.vinne.solutions.Mps.infra.model.Category;
 import com.vinne.solutions.Mps.infra.model.UserModel;
 import com.vinne.solutions.Mps.domain.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpServerErrorException;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 

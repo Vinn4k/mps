@@ -1,4 +1,4 @@
-package com.vinne.solutions.Mps.domain.usercases;
+package com.vinne.solutions.Mps.infra.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -25,11 +25,13 @@ public class Category implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
-    private String name;
+    private String descricao;
+    private boolean ativo;
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdDate;
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedDate;
+
 }
