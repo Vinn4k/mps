@@ -1,6 +1,6 @@
 package com.vinne.solutions.Mps.presenter.controller.exception;
 
-import com.vinne.solutions.Mps.domain.exception.CategoriaException;
+import com.vinne.solutions.Mps.domain.exception.LojaException;
 import loja.v1.model.ApiResponseRepresentation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,8 +11,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class UserControllerAdvice extends ResponseEntityExceptionHandler {
 
-        @ExceptionHandler(value = CategoriaException.class)
-        protected ResponseEntity<Object> handleConflict(Exception ex, CategoriaException request) {
+        @ExceptionHandler(value = LojaException.class)
+        protected ResponseEntity<Object> handleConflict(Exception ex, LojaException request) {
             var body = new ApiResponseRepresentation();
             body.setTitle(request.getReason().getTitulo());
             body.setMessage(request.getReason().getDescricao());
