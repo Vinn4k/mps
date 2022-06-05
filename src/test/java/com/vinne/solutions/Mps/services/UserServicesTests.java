@@ -32,21 +32,4 @@ public class UserServicesTests {
     UserMock userMocked = new UserMock();
     UserModel model = userMocked.userMock();
 
-    @Test
-    @DisplayName("Criar usuário")
-    void newUser() {
-
-        ResponseEntity<String> data = service.createUser(model);
-        assertEquals(new ResponseEntity<>("Usuário:" + model.getEmail() + " Criado com sucesso", HttpStatus.CREATED), data);
-
-    }@Test
-    @DisplayName("Usuário duplicado ")
-    void duplicateUser() {
-
-        ResponseEntity<String> data = service.createUser(model);
-        assertEquals(new ResponseEntity<>("Usuário:" + model.getEmail() + " Criado com sucesso", HttpStatus.CREATED), data);
-
-    }
-
-
 }
