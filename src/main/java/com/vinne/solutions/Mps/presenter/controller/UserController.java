@@ -1,6 +1,6 @@
 package com.vinne.solutions.Mps.presenter.controller;
 
-import com.vinne.solutions.Mps.infra.model.UserModel;
+import com.vinne.solutions.Mps.presenter.model.UserModel;
 import com.vinne.solutions.Mps.infra.services.UserService;
 import com.vinne.solutions.Mps.presenter.mapper.LojaMapper;
 import loja.v1.api.CategoriaApi;
