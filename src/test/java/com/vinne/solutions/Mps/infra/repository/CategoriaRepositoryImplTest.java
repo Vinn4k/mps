@@ -66,4 +66,17 @@ class CategoriaRepositoryImplTest {
 
         Assertions.assertThrows(LojaException.class,() -> repository.atualizarCategoria(categoria));
     }
+
+    @Test
+    void listarCategoria() {
+        repository.listarCategorias();
+    }
+
+    @Test
+    void listarCategoriaErroadd() {
+        Mockito.doThrow(new HttpServerErrorException(HttpStatus.INTERNAL_SERVER_ERROR))
+                .when(data).findAll();
+
+        Assertions.assertThrows(LojaException.class,() -> repository.listarCategorias());
+    }
 }

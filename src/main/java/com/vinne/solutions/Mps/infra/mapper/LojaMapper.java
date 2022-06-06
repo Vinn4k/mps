@@ -11,5 +11,6 @@ import java.util.List;
 public interface LojaMapper {
 
 	Category paraCategoriaDomain(CategoryRepresentation source);
+	List<CategoryRepresentation> paraListaDeCategoriasRepresentation(List<Category> source);
 
 }

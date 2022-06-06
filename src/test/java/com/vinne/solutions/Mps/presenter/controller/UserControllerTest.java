@@ -5,24 +5,23 @@ import com.vinne.solutions.Mps.domain.exception.LojaException;
 import com.vinne.solutions.Mps.domain.services.UserService;
 import com.vinne.solutions.Mps.infra.mapper.LojaMapper;
 import com.vinne.solutions.Mps.infra.model.Category;
-import com.vinne.solutions.Mps.infra.model.UserModel;
+import com.vinne.solutions.Mps.util.LojaUtils;
 import loja.v1.model.CategoryRepresentation;
+import loja.v1.model.ListCategoriesRepresentation;
 import org.jeasy.random.EasyRandom;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.jupiter.api.function.Executable;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.client.HttpServerErrorException;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
 class UserControllerTest {
@@ -44,7 +43,7 @@ class UserControllerTest {
 
     @Test
     void newUser() {
-        var domain = userMock();
+        var domain = LojaUtils.userMock();
 
        Mockito.when(userService.createUser(domain))
                .thenReturn(new ResponseEntity<String>(HttpStatus.OK));
@@ -56,8 +55,8 @@ class UserControllerTest {
     @Test
     void addCategoria() {
 
-        var representation = categoryRepresentationMock();
-        var domain = categoryDomainMock();
+        var representation = LojaUtils.categoryRepresentationMock();
+        var domain = LojaUtils.categoryDomainMock();
 
         Mockito.when(mapper.paraCategoriaDomain(representation))
                 .thenReturn(domain);
@@ -69,8 +68,8 @@ class UserControllerTest {
 
     @Test
     void atualizarCategoria() {
-        var representation = categoryRepresentationMock();
-        var domain = categoryDomainMock();
+        var representation = LojaUtils.categoryRepresentationMock();
+        var domain = LojaUtils.categoryDomainMock();
 
         Mockito.when(mapper.paraCategoriaDomain(representation))
                 .thenReturn(domain);
@@ -82,8 +81,27 @@ class UserControllerTest {
     }
 
     @Test
+    void listarCategorias() {
+        var representation = LojaUtils.categoryRepresentationMock();
+        var domain = LojaUtils.categoryDomainMock();
+        List<Category> listDomain = new ArrayList<>();
+        listDomain.add(domain);
+
+        List<CategoryRepresentation> listRep = new ArrayList<>();
+        listRep.add(representation);
+
+        Mockito.when(userService.listarCategorias()).thenReturn(listDomain);
+
+        Mockito.when(mapper.paraListaDeCategoriasRepresentation(listDomain))
+                .thenReturn(listRep);
+
+        Assertions.assertEquals(new ListCategoriesRepresentation().categories(listRep),controller.listarCategorias().getBody());
+
+    }
+
+    @Test
     void newUserErroCriarUsuario() {
-        var domain = userMock();
+        var domain = LojaUtils.userMock();
 
         Mockito.when(userService.createUser(domain))
                 .thenThrow(new LojaException(ExceptionReason.ERRO_CRIAR_USUARIO));
@@ -95,8 +113,8 @@ class UserControllerTest {
     @Test
     void addCategoriaErro() {
 
-        var representation = categoryRepresentationMock();
-        var domain = categoryDomainMock();
+        var representation = LojaUtils.categoryRepresentationMock();
+        var domain = LojaUtils.categoryDomainMock();
 
         Mockito.when(mapper.paraCategoriaDomain(representation))
                 .thenReturn(domain);
@@ -109,8 +127,8 @@ class UserControllerTest {
 
     @Test
     void atualizarCategoriaErro() {
-        var representation = categoryRepresentationMock();
-        var domain = categoryDomainMock();
+        var representation = LojaUtils.categoryRepresentationMock();
+        var domain = LojaUtils.categoryDomainMock();
 
         Mockito.when(mapper.paraCategoriaDomain(representation))
                 .thenReturn(domain);
@@ -121,18 +139,12 @@ class UserControllerTest {
         Assertions.assertThrows(LojaException.class,() -> controller.atualizarCategoria(representation));
     }
 
+    @Test
+    void listarCategoriasErro() {
+        Mockito.doThrow(new LojaException(ExceptionReason.ERRO_ATUALIZAR_CATEGORIA))
+                .when(userService).listarCategorias();
 
-
-
-    private CategoryRepresentation categoryRepresentationMock(){
-        return easyRandom.nextObject(CategoryRepresentation.class);
+        Assertions.assertThrows(LojaException.class,() -> controller.listarCategorias());
     }
 
-    private UserModel userMock(){
-        return easyRandom.nextObject(UserModel.class);
-    }
-
-    private Category categoryDomainMock(){
-        return easyRandom.nextObject(Category.class);
-    }
 }

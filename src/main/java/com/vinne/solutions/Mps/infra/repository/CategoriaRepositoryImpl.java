@@ -9,6 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 @Slf4j
 public class CategoriaRepositoryImpl implements CategoriaRepository {
@@ -36,4 +38,13 @@ public class CategoriaRepositoryImpl implements CategoriaRepository {
         }
     }
 
+    @Override
+    public List<Category> listarCategorias() {
+        try {
+            return repository.findAll();
+        }catch (RuntimeException e){
+            log.error("Ocorreu um erro ao tentar buscar todas as Categorias: message{}", e.getMessage());
+            throw new LojaException(ExceptionReason.ERRO_LISTAR_CATEGORIAS);
+        }
+    }
 }

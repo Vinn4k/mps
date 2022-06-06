@@ -86,6 +86,31 @@ paths:
           schema:
             $ref: "#/definitions/ApiResponse"
 
+    get:
+      tags:
+        - "Sistema Loja"
+      summary: "Lista todas as categorias to the store"
+      description: ""
+      operationId: "listarCategorias"
+      produces:
+        - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "Sucesso"
+          schema:
+            $ref: "#/definitions/ListCategories"
+        201:
+          description: "Created"
+        400:
+          description: "Bad Request"
+        404:
+          description: "Not Found"
+        500:
+          description: "Internal Server Error"
+          schema:
+            $ref: "#/definitions/ApiResponse"
+
   /testando-swagger:
     get:
       tags:
@@ -573,10 +598,13 @@ definitions:
       ativo:
         type: boolean
 
-  ListarCategoria:
-    type: array
-    items:
-      $ref: "#/definitions/Category"
+  ListCategories:
+    type: object
+    properties:
+      categories:
+        type: array
+        items:
+          $ref: "#/definitions/Category"
 
   Pet:
     type: "object"

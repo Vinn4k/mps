@@ -12,6 +12,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpServerErrorException;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @Slf4j
 public class UserService {
@@ -40,5 +43,9 @@ public class UserService {
     }
     public void atualizarCategoria(Category category){
            categoriaRepository.atualizarCategoria(category);
+    }
+    public List<Category> listarCategorias(){
+          var list = categoriaRepository.listarCategorias();
+          return list.stream().filter(Category::isAtivo).collect(Collectors.toList());
     }
 }
