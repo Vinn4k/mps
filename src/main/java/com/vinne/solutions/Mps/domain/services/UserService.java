@@ -45,6 +45,7 @@ public class UserService {
            categoriaRepository.atualizarCategoria(category);
     }
     public List<Category> listarCategorias(){
+         log.debug("Service");
           var list = categoriaRepository.listarCategorias();
           return list.stream().filter(Category::isAtivo).collect(Collectors.toList());
     }
