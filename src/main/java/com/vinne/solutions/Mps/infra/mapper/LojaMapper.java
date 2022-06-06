@@ -1,4 +1,4 @@
-package com.vinne.solutions.Mps.presenter.mapper;
+package com.vinne.solutions.Mps.infra.mapper;
 
 import com.vinne.solutions.Mps.infra.model.Category;
 import loja.v1.model.CategoryRepresentation;
@@ -11,5 +11,6 @@ import java.util.List;
 public interface LojaMapper {
 
 	Category paraCategoriaDomain(CategoryRepresentation source);
+	List<CategoryRepresentation> paraListaDeCategoriasRepresentation(List<Category> source);
 
 }
